@@ -21,7 +21,7 @@ const productSchema = new mongoose.Schema({
 });
 
 const Product = mongoose.model('Product', productSchema); 
-//tells to mongoose to create a collection called Product
+//tells to mongoose to create a collection called Product 
 //with the scema defined above
 //mongoose is gonna convert it to 'products' (lowercase and plural)
 

@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+//this mongoose package makes it easier to interact with MongoDB database (which is a NoSQL database)
+
 
 export const connectDB = async() => {
     try{
