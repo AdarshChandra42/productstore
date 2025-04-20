@@ -13,6 +13,8 @@ dotenv.config();
 //Parses the key-value pairs in that file
 //Adds those values to Node's process.env object, making them accessible throughout your application
 
+const PORT = process.env.PORT || 5000; //if PORT env var is missing only then will it take 5000
+
 const app = express(); 
 //creates an instance of an Express application. 
 //This instance, stored in the app variable, will be used to configure your server and define routes.
@@ -31,9 +33,9 @@ app.use("/api/products", productRoutes);
 //The connectDB() function is called to establish a connection to the MongoDB database before the server starts listening for requests.
 //The callback function logs a message to the console indicating that the server has started successfully.
 
-app.listen(5000, () => {
+app.listen(PORT, () => {
     connectDB();
-    console.log("Server started at Localhost");
+    console.log("Server started at http://localhost:" + PORT)
 });
 
 //This line does two important things:
