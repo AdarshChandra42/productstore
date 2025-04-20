@@ -20,7 +20,7 @@ export const useProductStore = create((set) => ({
     }
 }))
 // if you have something like ({}), i.e., a function wrapped within brackets
-//that means it is returning an object. This is basic JS. 
+//that means it is returning an object. This is basic Javascript.
 
 //const [state, setstate] = useState([]) this is local state
 
