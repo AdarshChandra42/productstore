@@ -1,4 +1,4 @@
-import { Button, Container, useColorModeValue, VStack, Box, Input, Heading } from "@chakra-ui/react"
+import { Button, Container, useColorModeValue, VStack, Box, Input, Heading, useToast } from "@chakra-ui/react"
 import { useState } from "react"
 import { useProductStore } from "../store/product"
 
@@ -7,14 +7,36 @@ const CreatePage = () => {
         name: "",
         price: "",
         image: ""
-    })
+    });
+    //useState hook returns an array with exactly two elements
+    //this useState hook is initialised with an object that has three properties: name, price, image
+    //newProduct is a state variable that holds the current state values for name, price, image
+    //setNewProduct is a function to update the state
+
+    const toast = useToast()
 
     const {createProduct}= useProductStore()
 
     const handleAddProduct = async () => {
         const {success, message} = await createProduct(newProduct)
-        console.log("Success: ", success);
-        console.log("Message: ", message);
+        if(!success){
+            toast({
+                "title": "Error",
+                description: message, 
+                status: "error", 
+                duration: 2000, //2s
+                isClosable: true
+            })
+        }else{
+            toast({
+                "title": "Success",
+                description: message, 
+                status: "success", 
+                duration: 2000, //2s
+                isClosable: true
+            })
+        }
+        setNewProduct({name:"", price: "", image: ""}) //to empty the input fields after u create a product
     }
 
     return (
