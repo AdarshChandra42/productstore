@@ -15,7 +15,7 @@ const CreatePage = () => {
 
     const toast = useToast()
 
-    const {createProduct}= useProductStore()
+    const {createProduct}= useProductStore() //importing global state here in this file
 
     const handleAddProduct = async () => {
         const {success, message} = await createProduct(newProduct)
@@ -24,7 +24,7 @@ const CreatePage = () => {
                 "title": "Error",
                 description: message, 
                 status: "error", 
-                duration: 2000, //2s
+                duration: 1500, //1.5s
                 isClosable: true
             })
         }else{
@@ -32,7 +32,7 @@ const CreatePage = () => {
                 "title": "Success",
                 description: message, 
                 status: "success", 
-                duration: 2000, //2s
+                duration: 1500, //1.5s
                 isClosable: true
             })
         }
@@ -56,8 +56,12 @@ const CreatePage = () => {
                             placeholder = 'Product Name'
                             name = 'name'
                             value = {newProduct.name}
+                            //newProduct.name = "" so it will always show empty
                             onChange={(e)=> setNewProduct({ ...newProduct, name: e.target.value}) }
-                        
+                            //... is the spread operator. It copies all existing properties from the 
+                            //current newProduct object.                    
+                            //name: e.target.value is setting the name property to whatever value was 
+                            //typed in the input field    
                         />
                         <Input
                             placeholder = 'Price'
